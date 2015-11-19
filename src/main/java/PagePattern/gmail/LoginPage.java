@@ -1,8 +1,11 @@
-package PagePattern;
+package pagePattern.gmail;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
-public class GmailLoginPage extends Page {
+import pagePattern.templates.PageTemplate;
+
+public class LoginPage extends PageTemplate {
 
 	public static String urlGmailLoginPage = "https://mail.google.com";
 	public static String expectedAlertForNotValidEmail = "Please enter a valid email address.";
@@ -10,47 +13,42 @@ public class GmailLoginPage extends Page {
 	
 	private By edtEmail = By.id("Email");
 	private By btnNext = By.id("next");
-	private By msgAlert = By.className("alert"); // it was for Chrome
+	//private By msgAlert = By.className("alert"); // it was for Chrome
 	private By msgError = By.className("error-msg");
 	private By edtPassward = By.id("Passwd");
 	private By msgEmailBeforeTypePassword = By.id("email-display");
 	private By chkStaySignedIn = By.id("PersistentCookie");
 	private By btnSignIn = By.id("signIn");
 	
-	public GmailLoginPage (WebDriver driver) {
+	public LoginPage (WebDriver driver) {
 		super(driver);
 		setUpPage(urlGmailLoginPage);
 	}
 	
-	public GmailLoginPage setPassward(String passward) {
+	public void setPassward(String passward) {
 		clear(edtPassward);
 		sendKey(edtPassward, passward);
-		return this;
 	}
 
-	public GmailLoginPage submitNext () {
+	public void submitNext () {
 		submit(btnNext);
-        return this;
 	}
 	
-	public GmailMainPage submitSignIn () {
+	public MainPage submitSignIn () {
 		submit(btnSignIn);
-        return new GmailMainPage(driver);
+        return new MainPage(driver);
 	}
 	
-	public GmailLoginPage setEmail () {
+	public void setEmail () {
 		clear(edtEmail);
-		return this;
 	}
 	
-	public GmailLoginPage setEmail (String email) {
+	public void setEmail (String email) {
 		if (email.isEmpty()) {
 			setEmail();
 		} else {
 			sendKey(edtEmail, email);
 		}
-		
-		return this;
 	}
 	
 	public String getErrorMessage () {
@@ -61,10 +59,9 @@ public class GmailLoginPage extends Page {
 		return getText(msgEmailBeforeTypePassword);
 	}
 	
-	public GmailLoginPage setStaySignedIn (Boolean shouldStaySignedIn) {
+	public void setStaySignedIn (Boolean shouldStaySignedIn) {
 		if (!shouldStaySignedIn.equals(isSelected(chkStaySignedIn))) 
 			click(chkStaySignedIn);
-		return this;
 	}
 	
 }

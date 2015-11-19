@@ -1,18 +1,18 @@
-package PagePattern;
+package pagePattern.templates;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.openqa.selenium.support.ui.ExpectedCondition;
 
-public class Page {
+public abstract class PageTemplate {
 	
 	private int defaultElementTimeOut = 5;
 	private int defaultPageTimeOut = 10;
 	
 	protected final WebDriver driver;
 	
-	public Page (WebDriver driver) {
+	public PageTemplate (WebDriver driver) {
         this.driver = driver;
 	}
 	
