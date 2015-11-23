@@ -1,8 +1,11 @@
-package pagePattern.templates;
+package pages;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
+
+import pages.helpers.SeleniumActions;
+
 import org.openqa.selenium.support.ui.ExpectedCondition;
 
 public abstract class PageTemplate {
@@ -17,7 +20,7 @@ public abstract class PageTemplate {
 	}
 	
 	public void setUpPage (String link) {
-		driver.get(link);
+		SeleniumActions.setUpPage(driver, link);
 	}
 	
 	public void sendKey (By locator, String value) {

@@ -1,14 +1,12 @@
-package pagePattern.gmail;
+package pages;
 
 import org.openqa.selenium.WebDriver;
 
-import pagePattern.templates.PageTemplate;
-
-public class MainPage extends PageTemplate {
+public class GmailMainPage extends PageTemplate {
 	
 	private String expectedDefaultTitleEnd = "@gmail.com - Gmail";
 
-	public MainPage(WebDriver driver) {
+	public GmailMainPage(WebDriver driver) {
 		super(driver);
 		waitOnTitle(expectedDefaultTitleEnd);
 	}

@@ -1,11 +1,9 @@
-package pagePattern.gmail;
+package pages;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
-import pagePattern.templates.PageTemplate;
-
-public class LoginPage extends PageTemplate {
+public class GmailLoginPage extends PageTemplate {
 
 	public static String urlGmailLoginPage = "https://mail.google.com";
 	public static String expectedAlertForNotValidEmail = "Please enter a valid email address.";
@@ -20,7 +18,7 @@ public class LoginPage extends PageTemplate {
 	private By chkStaySignedIn = By.id("PersistentCookie");
 	private By btnSignIn = By.id("signIn");
 	
-	public LoginPage (WebDriver driver) {
+	public GmailLoginPage (WebDriver driver) {
 		super(driver);
 		setUpPage(urlGmailLoginPage);
 	}
@@ -34,9 +32,9 @@ public class LoginPage extends PageTemplate {
 		submit(btnNext);
 	}
 	
-	public MainPage submitSignIn () {
+	public GmailMainPage submitSignIn () {
 		submit(btnSignIn);
-        return new MainPage(driver);
+        return new GmailMainPage(driver);
 	}
 	
 	public void setEmail () {

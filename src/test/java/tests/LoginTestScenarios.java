@@ -1,8 +1,7 @@
-package gmail.login;
+package tests;
 
-import pagePattern.gmail.LoginPage;
-import pagePattern.gmail.MainPage;
-import pagePattern.templates.TestTemplate;
+import pages.GmailLoginPage;
+import pages.GmailMainPage;
 
 import static org.junit.Assert.*;
 import org.junit.Before;
@@ -10,8 +9,8 @@ import org.junit.Test;
 
 public class LoginTestScenarios extends TestTemplate {
 
-	private LoginPage logInPage;
-	private MainPage mainPage;
+	private GmailLoginPage logInPage;
+	private GmailMainPage mainPage;
 	
 	private String validEmail = "email@gmail.com"; // your email
 	private String password = "password"; // your password
@@ -20,14 +19,14 @@ public class LoginTestScenarios extends TestTemplate {
 	
 	@Before
 	public void beforeLoginTest () {
-		logInPage = new LoginPage(driver);
+		logInPage = new GmailLoginPage(driver);
 	}
 	
 	@Test
 	public void LogIntoGmailWithEmptyEmailTest () {
 		logInPage.setEmail(emptyEmail);
 		logInPage.submitNext();
-		assertEquals(LoginPage.expectedAlertForEmptyEmail, logInPage.getErrorMessage());
+		assertEquals(GmailLoginPage.expectedAlertForEmptyEmail, logInPage.getErrorMessage());
 		
 	}
 	
@@ -35,7 +34,7 @@ public class LoginTestScenarios extends TestTemplate {
 	public void LogIntoGmailWithNotValidEmailTest () {
 		logInPage.setEmail(notValidEmail);
 		logInPage.submitNext();
-		assertEquals(LoginPage.expectedAlertForNotValidEmail, logInPage.getErrorMessage());
+		assertEquals(GmailLoginPage.expectedAlertForNotValidEmail, logInPage.getErrorMessage());
 		
 	}
 	
