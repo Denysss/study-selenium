@@ -1,5 +1,5 @@
 package tests;
 
-public class GmailLogin extends RunStories {
-
+public class GmailLogin extends TestTemplate {
+	
 }
